@@ -11,31 +11,81 @@
   ],
   "activationEvents": [],
   "main": "./out/extension.js",
+  "include": [
+    "src"
+  ],
   "contributes": {
     "commands": [
       {
         "command": "kroki-helper.helloWorld",
         "title": "Hello World"
+      },
+      {
+        "command": "kroki-helper.sayHello",
+        "title": "Say Hello via menus"
+      },
+      {
+        "command": "kroki-helper.svg",
+        "title": "svg"
+      },
+      {
+        "command": "kroki-helper.pdf",
+        "title": "pdf"
       }
-    ]
+    ],
+    "submenus": [
+      {
+        "id": "kroki-helper.toolsSubmenu",
+        "label": "Kroki"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "submenu": "kroki-helper.toolsSubmenu",
+          "when": "editorTextFocus",
+          "group": "navigation"
+        }
+      ],
+      "kroki-helper.toolsSubmenu": [
+        {
+          "command": "kroki-helper.svg",
+          "group": "1_mod"
+        },
+        {
+          "command": "kroki-helper.pdf",
+          "group": "2_other"
+        }
+      ]
+    }
   },
-  "scripts": {
-    "vscode:prepublish": "npm run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "npm run compile && npm run lint",
-    "lint": "eslint src",
-    "test": "vscode-test"
+  "configuration": {
+    "title": "kroki-helper",
+    "properties": {
+      "myExtension.serverUrl": {
+        "type": "string",
+        "default": "https://kroki.io",
+        "description": "The kroki server URL used by the extension"
+      }
+    }
   },
+"scripts": {
+  "clean": "rimraf out",
+  "watch": "tsc -watch -p ./",
+  "compile": "tsc",
+  "build": "npm run clean && npm run compile"
+},
+
   "devDependencies": {
-    "@types/vscode": "^1.101.0",
     "@types/mocha": "^10.0.10",
     "@types/node": "20.x",
+    "@types/vscode": "^1.101.0",
     "@typescript-eslint/eslint-plugin": "^8.31.1",
     "@typescript-eslint/parser": "^8.31.1",
-    "eslint": "^9.25.1",
-    "typescript": "^5.8.3",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.5.2"
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.25.1",
+    "rimraf": "^6.0.1",
+    "typescript": "^5.8.3"
   }
 }

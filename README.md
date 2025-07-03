@@ -12,6 +12,20 @@ For example if there is an image subfolder under your extension project workspac
 
 > Tip: Many popular extensions utilize animations. This is an excellent way to show off your extension! We recommend short, focused animations that are easy to follow.
 
+## Development 
+
+```
+npm install --global yo generator-code
+npm run build
+
+```
+Open project in code
+Inside the editor, open `src/extension.ts` and press `F5` or run the command Debug: Start Debugging from the Command Palette `(Ctrl+Shift+P)`. This will compile and run the extension in a new Extension Development Host window.
+Run the `Hello World` command from the Command Palette `(Ctrl+Shift+P)` in the new window:
+
+Refer below link for build
+
+([Your First Extension](https://code.visualstudio.com/api/get-started/your-first-extension))
 ## Requirements
 
 If you have any requirements or dependencies, add a section describing those and how to install and configure them.
@@ -37,17 +51,8 @@ Users appreciate release notes as you update your extension.
 
 ### 1.0.0
 
-Initial release of ...
+place holder
 
-### 1.0.1
-
-Fixed issue #.
-
-### 1.1.0
-
-Added features X, Y, and Z.
-
----
 
 ## Following extension guidelines
 
